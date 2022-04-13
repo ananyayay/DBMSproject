@@ -1,9 +1,90 @@
+*{
+    background-color: #fbfbfb;
+}
+
 #header
 {
     position: absolute;
     width: 1920px;
-    height: 42.95px;
+    height: 40px;
     left: 0px;
-    top: 61.89px;
+    top: 40px;
     background: #000000;
+}
+
+#footer
+{
+    position: absolute;
+    width: 1920px;
+    height: 100px;
+    left: 0px;
+    bottom: 0px;
+    background: #373737;
+}
+
+.container
+{
+    position: absolute;
+    height: 400px;
+    width: 600px;
+    background: #ffffff;
+
+    border: 0.5px solid #878787;
+    border-radius: 10px;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+.loginbutton
+{
+    position: relative;
+    width: 500px;
+    height: 50px;
+    left: 50px;
+    border: 1px solid #000000;
+    background: #ffffff;
+    border-radius: 8px;
+
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 70;
+    font-size: 20px;
+    line-height: 47px;
+
+    color: #000000;
+
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.loginbutton:hover
+{
+    box-shadow: 2px 2px 6px 0px #000000;
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.loginbutton:active
+{
+    box-shadow: 0px 0px #000000;
+    top:2px;
+}
+
+#customer
+{
+    top: 73px;
+}
+#driver
+{
+    top: 123px;
+}
+
+#admin
+{
+    top: 173px;
 }

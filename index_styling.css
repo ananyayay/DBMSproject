@@ -59,7 +59,7 @@
     color: #000000;
 
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.1s;
 }
 
 .loginbutton:hover

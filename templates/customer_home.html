@@ -29,13 +29,29 @@
             </div>
         </nav>
         <div id="header"></div>
-        <div id="box">
-            <div id="choices">
-                <div class = "opt" id="opt1" onclick="opt1clicked()"></div>
-                <div class = "opt" id="opt2" onclick="opt2clicked()"></div>
-                <div class = "opt" id="opt3" onclick="opt3clicked()"></div>
-                <div class = "opt" id="opt4" onclick="opt4clicked()"></div>
+        <div id="choices">
+            <div class = "opt" id="opt1" onclick="rideTypeSelected('opt1')">CITY RIDE</div>
+            <div class = "opt" id="opt2" onclick="rideTypeSelected('opt2')">SHARED</div>
+            <div class = "opt" id="opt3" onclick="rideTypeSelected('opt3')">RENTALS</div>
+            <div class = "opt" id="opt4" onclick="rideTypeSelected('opt4')">OUTSTATION</div>
+        </div>
+        <div class="address">
+            <div class="form-group">
+                <label for="address">PICK UP</label>
+                <input type="text" name="pickup" id="pickup" placeholder="Enter your pick up location (number from 1 to 10)" size="30px" maxlength="100">
             </div>
+            <div class="form-group">
+                <label for="postcode">DROP</label>
+                <input type="text" name="drop" id="drop" placeholder="Enter your drop location (number from 1 to 10)" size="30px" maxlength="100">
+            </div>
+            <div class="form-group">
+                <label for="city">WHEN</label>
+                <input type="text" name="when" id="when" placeholder="Enter 'now' to book a cab now, or enter a later time today (HH:MM:SS)" size="30px" maxlength="100">
+            </div>
+        </div>
+        <div class="submit">
+            <!-- <input type="submit" value="Submit"> -->
+            <button id="submitButton" type="submit" onclick="formSubmitted()">Search Cabs</button>
         </div>
         <div id="footer"></div>
         <script src="../static/js/customer_home.js"></script>

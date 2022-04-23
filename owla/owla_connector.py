@@ -6,19 +6,15 @@ class DataBase():
             host = "localhost",
             user = "root",
             passwd = "13373301",
-            database = "testdb"
+            database = "owla"
         )
         self.cursor = self.get_cursor()
     
     def get_cursor(self):
         return self.db.cursor()
 
-    def insert_vals(self, name, email):
+    def get_vals(self, tablename):
         cur = self.cursor
-        cur.execute("INSERT INTO users(name, email) VALUES(%s, %s)", (name, email))
-
-    def get_vals(self):
-        cur = self.cursor
-        cur.execute("SELECT * FROM users;")
+        cur.execute(f"SELECT * FROM {tablename};")
         res = cur.fetchall()
         return res

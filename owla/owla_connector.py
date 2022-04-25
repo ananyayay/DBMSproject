@@ -22,7 +22,7 @@ class DataBase():
     def query_1(self):
         cur = self.cursor
         cur.execute(
-            """CREATE VIEW AS SELECT COUNT(*) as searches_that_resulted_in_bookings FROM search WHERE booking_id IS NOT NULL;"""
+            """SELECT COUNT(*) as searches_that_resulted_in_bookings FROM search WHERE booking_id IS NOT NULL;"""
         )
         res = cur.fetchall()
         return res

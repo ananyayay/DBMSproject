@@ -72,35 +72,40 @@
 
 #first
 {
-    top: 55px;
+    top: 20px;
 }
 
 #second
 {
-    top: 85px;
+    top: 50px;
 }
 
 #third
 {
-    top: 115px;
+    top: 80px;
 }
 
 #fourth
 {
-    top: 145px;
+    top: 110px;
 }
 
 #fifth
 {
-    top: 175px;
+    top: 140px;
 }
 
 #sixth
 {
-    top: 205px;
+    top: 170px;
 }
 
 #seventh
 {
-    top: 235px;
+    top: 200px;
+}
+
+#eighth
+{
+    top: 230px;
 }

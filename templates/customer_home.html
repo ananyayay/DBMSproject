@@ -29,14 +29,23 @@
             </div>
         </nav>
         <div id="header"></div>
-        <div id="choices">
+        <!-- <div id="choices">
             <div class = "opt" id="opt1" onclick="rideTypeSelected('opt1')">CITY RIDE</div>
             <div class = "opt" id="opt2" onclick="rideTypeSelected('opt2')">SHARED</div>
             <div class = "opt" id="opt3" onclick="rideTypeSelected('opt3')">RENTALS</div>
             <div class = "opt" id="opt4" onclick="rideTypeSelected('opt4')">OUTSTATION</div>
-        </div>
+        </div> -->
         <div class="address">
             <form method="post">
+                <p>select ride type:</p>
+                <input type="radio" id="cityride" name="cityride" value="cityride">
+                <label for="cityride">City Ride</label><br>
+                <input type="radio" id="shared" name="shared" value="shared">
+                <label for="shared">shared</label><br>
+                <input type="radio" id="rentals" name="rentals" value="rentals">
+                <label for="rentals">Rentals</label><br>
+                <input type="radio" id="outstation" name="outstation" value="outstation">
+                <label for="outstation">Outstation</label>
                 <div class="form-group">
                     <label for="address">PICK UP</label>
                     <input type="text" name="pickup" id="pickup" placeholder="Enter your pick up location (number from 1 to 10)" size="30px" maxlength="100">

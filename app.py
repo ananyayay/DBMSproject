@@ -45,10 +45,12 @@ def admin_home():
 def customer_home():
     if request.method=="POST":
         ridetype = request.form["ride"]
+        cartype = request.form["cartype"]
         pickup = request.form["pickup"]
         drop = request.form["drop"]
         when = request.form["when"]
-        
+        db.insert_searchcabs(ridetype, pickup, drop, cartype)
+
     return render_template("customer_home.html")
 
 @app.route("/driver_home.html", methods = ["GET", "POST"])

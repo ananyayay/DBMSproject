@@ -24,8 +24,10 @@ def driver_login():
 def admin_home():
     if request.method=="POST":
         if "first" in request.form:
+            print(db.query_1())
             return table_template(db.query_1())
         elif "second" in request.form:
+            print(db.query_2())
             return table_template(db.query_2())
         elif "third" in request.form:
             return table_template(db.query_11())
@@ -41,13 +43,32 @@ def admin_home():
 
 @app.route("/customer_home.html", methods = ["GET", "POST"])
 def customer_home():
+    # if request.method=="POST":
+
     return render_template("customer_home.html")
 
+@app.route("/driver_home.html", methods = ["GET", "POST"])
+def driver_home():
+    return render_template("driver_home.html")
+
 @app.route("/table_template.html")
-def table_template(query=None):
-    if not query:
-        query = db.get_vals("olamoneyaccount")
+def table_template(query):
     return render_template("table_template.html", rows = query)
+
+@app.route("/yourwallet.html")
+def yourwallet():
+    q1, q2 = db.get_wallet()
+    return render_template("yourwallet.html", row1 = q1, row2 = q2)
+
+@app.route("/yourrides.html")
+def yourrides():
+    q1, q2, q3, q4 = db.get_rides()
+    return render_template("yourrides.html", row1 = q1, row2 = q2, row3 = q3, row4 = q4)
+
+@app.route("/savedlocations.html")
+def savedlocations():
+    q1 = db.get_saved_locations()
+    return render_template("savedlocations.html", row1 = q1)
 
 if __name__ == "__main__":
     app.run(debug = True)

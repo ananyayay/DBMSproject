@@ -19,6 +19,36 @@ class DataBase():
         res = cur.fetchall()
         return res
     
+    def get_wallet(self):
+        cur = self.cursor
+        q1 = []
+        q2 = []
+        cur.execute("SELECT balance FROM olamoneyaccount WHERE customer_id=1;")
+        q1 = cur.fetchall()
+        cur.execute("SELECT amount, timeoftransaction FROM transactions, olamoneyaccount WHERE olamoneyaccount.olamoneyaccount_id=1;")
+        q2 = cur.fetchall()
+        return (q1, q2)
+    
+    def get_rides(self):
+        cur = self.cursor
+        q1, q2, q3, q4 = [], [], [], []
+        cur.execute("SELECT from_location, to_location, timeofbooking, ridetype, status, reason, cancelledby, penalty from booking, cancelledrides WHERE booking.customer_id=1 AND booking.status='cancelled' and cancelledrides.booking_id=booking.booking_id;")
+        q1 = cur.fetchall()
+        cur.execute("SELECT from_location, to_location, timeofbooking, ridetype, status, vehicle_type, duration_hrs, distance_km from booking, rentalpackages WHERE booking.customer_id=1 AND rentalpackages.package_id=booking.package_id;")
+        q2 = cur.fetchall()
+        cur.execute("SELECT from_location, to_location, timeofbooking, ridetype, status from booking WHERE booking.customer_id=1 AND booking.ridetype='shared';")
+        q3 = cur.fetchall()
+        cur.execute("SELECT from_location, to_location, timeofbooking, ridetype, status from booking WHERE booking.customer_id=1 AND booking.ridetype='outstation';")
+        q4 = cur.fetchall()
+        return(q1, q2, q3, q4)
+
+    def get_saved_locations(self):
+        cur = self.cursor
+        q1 = []
+        cur.execute("SELECT * FROM location WHERE location_id=(SELECT location_id FROM savedplaces WHERE customer_id= 1);")
+        q1 = cur.fetchall()
+        return q1
+
     def query_1(self):
         cur = self.cursor
         cur.execute(
@@ -26,15 +56,15 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_2(self):
         cur = self.cursor
         cur.execute(
-            """CREATE VIEW AS SELECT street, locality, city, state, pincode from location WHERE location_id = (SELECT location_id AS most_saved_location FROM savedplaces GROUP BY location_id ORDER BY COUNT(*) DESC LIMIT 1);"""
+            """SELECT street, locality, city, state, pincode from location WHERE location_id = (SELECT location_id AS most_saved_location FROM savedplaces GROUP BY location_id ORDER BY COUNT(*) DESC LIMIT 1);"""
         )
         res = cur.fetchall()
         return res
-    
+
     def query_3(self):
         cur = self.cursor
         cur.execute(
@@ -42,7 +72,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_4(self):
         cur = self.cursor
         cur.execute(
@@ -50,7 +80,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_5(self):
         cur = self.cursor
         cur.execute(
@@ -58,7 +88,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_6(self):
         cur = self.cursor
         cur.execute(
@@ -66,7 +96,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_7(self):
         cur = self.cursor
         cur.execute(
@@ -74,7 +104,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_8(self):
         cur = self.cursor
         cur.execute(
@@ -82,7 +112,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_9(self):
         cur = self.cursor
         cur.execute(
@@ -90,7 +120,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_10(self):
         cur = self.cursor
         cur.execute(
@@ -98,7 +128,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_11(self):
         cur = self.cursor
         cur.execute(
@@ -106,7 +136,7 @@ class DataBase():
         )
         res = cur.fetchall()
         return res
-    
+
     def query_12(self):
         cur = self.cursor
         cur.execute(

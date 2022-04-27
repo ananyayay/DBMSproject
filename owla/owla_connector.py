@@ -12,13 +12,6 @@ class DataBase():
     
     def get_cursor(self):
         return self.db.cursor()
-
-    def get_vals(self, tablename):
-        cur = self.cursor
-        cur.execute(f"CREATE VIEW getval AS SELECT * FROM {tablename};")
-        cur.execute("SELECT * FROM getval;")
-        res = cur.fetchall()
-        return res
     
     def get_wallet(self):
         cur = self.cursor
@@ -32,7 +25,7 @@ class DataBase():
         q2 = cur.fetchall()
         cur.execute("DROP VIEW walletview;")
         cur.execute("DROP VIEW walletviewtransac;")
-        return (q1, q2)
+        return (list(set(q1)), list(set(q2)))
     
     def get_rides(self):
         cur = self.cursor
@@ -53,16 +46,16 @@ class DataBase():
         cur.execute("DROP VIEW ride2;")
         cur.execute("DROP VIEW ride3;")
         cur.execute("DROP VIEW ride4;")
-        return(q1, q2, q3, q4)
+        return (list(set(q1)), list(set(q2)), list(set(q3)), list(set(q4)))
 
     def get_saved_locations(self):
         cur = self.cursor
         q1 = []
-        cur.execute("CREATE VIEW savedlocs AS SELECT * FROM location WHERE location_id=(SELECT location_id FROM savedplaces WHERE customer_id= 1);")
+        cur.execute("CREATE VIEW savedlocs AS SELECT l.street, l.locality, l.city, l.state, l.pincode FROM location AS l, customers AS c, savedplaces AS sp WHERE sp.customer_id=1 AND sp.location_id=l.location_id;")
         cur.execute("SELECT * FROM savedlocs;")
         q1 = cur.fetchall()
-        cur.execute("DROP VIEW savedlocs;")
-        return q1
+        # cur.execute("DROP VIEW savedlocs;")
+        return list(set(q1))
 
     def query_1(self):
         cur = self.cursor
@@ -72,7 +65,7 @@ class DataBase():
         cur.execute("SELECT * FROM query1;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query1;")
-        return res
+        return list(set(res))
 
     def query_2(self):
         cur = self.cursor
@@ -82,7 +75,7 @@ class DataBase():
         cur.execute("SELECT * FROM query2;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query2;")
-        return res
+        return list(set(res))
 
     def query_3(self):
         cur = self.cursor
@@ -92,7 +85,7 @@ class DataBase():
         cur.execute("SELECT * FROM query3;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query3;")
-        return res
+        return list(set(res))
 
     def query_4(self):
         cur = self.cursor
@@ -102,7 +95,7 @@ class DataBase():
         cur.execute("SELECT * FROM query4;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query4;")
-        return res
+        return list(set(res))
 
     def query_5(self):
         cur = self.cursor
@@ -112,7 +105,7 @@ class DataBase():
         cur.execute("SELECT * FROM query5;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query5;")
-        return res
+        return list(set(res))
 
     def query_6(self):
         cur = self.cursor
@@ -122,7 +115,7 @@ class DataBase():
         cur.execute("SELECT * FROM query6;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query6;")
-        return res
+        return list(set(res))
 
     def query_7(self):
         cur = self.cursor
@@ -132,7 +125,7 @@ class DataBase():
         cur.execute("SELECT * FROM query7;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query7;")
-        return res
+        return list(set(res))
 
     def query_8(self):
         cur = self.cursor
@@ -142,7 +135,7 @@ class DataBase():
         cur.execute("SELECT * FROM query8;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query8;")
-        return res
+        return list(set(res))
 
     def query_9(self):
         cur = self.cursor
@@ -152,7 +145,7 @@ class DataBase():
         cur.execute("SELECT * FROM query9;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query9;")
-        return res
+        return list(set(res))
 
     def query_10(self):
         cur = self.cursor
@@ -162,7 +155,7 @@ class DataBase():
         cur.execute("SELECT * FROM query10;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query10;")
-        return res
+        return list(set(res))
 
     def query_11(self):
         cur = self.cursor
@@ -172,7 +165,7 @@ class DataBase():
         cur.execute("SELECT * FROM query11;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query11;")
-        return res
+        return list(set(res))
 
     def query_12(self):
         cur = self.cursor
@@ -182,4 +175,4 @@ class DataBase():
         cur.execute("SELECT * FROM query12;")
         res = cur.fetchall()
         cur.execute("DROP VIEW query12;")
-        return res
+        return list(set(res))

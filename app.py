@@ -43,8 +43,12 @@ def admin_home():
 
 @app.route("/customer_home.html", methods = ["GET", "POST"])
 def customer_home():
-    # if request.method=="POST":
-
+    if request.method=="POST":
+        ridetype = request.form["ride"]
+        pickup = request.form["pickup"]
+        drop = request.form["drop"]
+        when = request.form["when"]
+        
     return render_template("customer_home.html")
 
 @app.route("/driver_home.html", methods = ["GET", "POST"])

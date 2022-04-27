@@ -57,6 +57,10 @@ class DataBase():
         # cur.execute("DROP VIEW savedlocs;")
         return list(set(q1))
 
+    def insert_searchcabs(self, ridetype, pickup, drop, vehicle_type):
+        cur = self.cursor
+        cur.execute("INSERT INTO search(customer_id, from_location, to_location, ridetype, vehicle_type) VALUES (1, %s, %s, %s, %s)", (pickup, drop, ridetype, vehicle_type))
+
     def query_1(self):
         cur = self.cursor
         cur.execute(

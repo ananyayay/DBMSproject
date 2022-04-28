@@ -597,7 +597,6 @@ insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, mo
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (7, 'HR26DQ1101', 'SUV', 'Petrol', 'GMC', 'Envoy', 1, 0, 1, '11:49:06', '18:46:53', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (180, 'MH12DE2629', 'SUV', 'Diesel', 'Nissan', 'Sentra', 0, 0, 1, '1:49:16', '11:07:53', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (11, 'DL4CAF7023', 'Mini', 'CNG', 'GMC', 'Yukon', 0, 1, 1, '17:04:42', '12:41:54', 2, 30);
-insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (242, 'MH12DE5893', 'Mini', 'Diesel', 'Cadillac', 'Fleetwood', 0, 0, 1, '5:48:31', '7:27:25', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (78, 'DL10S4443', 'Mini', 'CNG', 'Toyota', 'Highlander', 1, 1, 1, '3:03:40', '13:35:27', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (167, 'DL1CAM7743', 'Sedan', 'CNG', 'Buick', 'Regal', 1, 1, 1, '12:57:22', '9:43:43', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (9, 'DL4CAF5968', 'Bike', 'Petrol', 'Chevrolet', 'Sportvan G30', 0, 1, 1, '3:21:37', '5:39:05', 2, 30);
@@ -614,9 +613,6 @@ insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, mo
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (230, 'HR26DQ3060', 'SUV', 'Petrol', 'Ford', 'Tempo', 1, 0, 0, '5:31:47', '16:35:48', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (98, 'DL4CAF5968', 'Sedan', 'Petrol', 'Chevrolet', 'Sportvan G30', 1, 1, 1, '3:03:47', '1:34:20', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (181, 'HR26DQ7908', 'Mini', 'CNG', 'Audi', '4000s Quattro', 1, 1, 1, '4:05:47', '15:14:24', 2, 30);
-
-
-
 
 
 

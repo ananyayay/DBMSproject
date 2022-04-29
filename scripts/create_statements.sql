@@ -1,3 +1,5 @@
+use owla;
+
 CREATE TABLE `bankaccount` (
   `account_id` int unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int unsigned NOT NULL,
@@ -9,7 +11,6 @@ CREATE TABLE `bankaccount` (
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `bankaccount_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
-
 
 CREATE TABLE `booking` (
   `booking_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -32,8 +33,6 @@ CREATE TABLE `booking` (
   CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
 
-
-
 CREATE TABLE `cancelledrides` (
   `booking_id` int unsigned NOT NULL,
   `reason` varchar(300) DEFAULT NULL,
@@ -42,7 +41,6 @@ CREATE TABLE `cancelledrides` (
   KEY `booking_id` (`booking_id`),
   CONSTRAINT `cancelledrides_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
-
 
 CREATE TABLE `customers` (
   `customer_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -56,7 +54,6 @@ CREATE TABLE `customers` (
   KEY `location_id` (`location_id`),
   CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
 
 CREATE TABLE `drivers` (
   `driver_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -73,8 +70,6 @@ CREATE TABLE `drivers` (
   CONSTRAINT `drivers_ibfk_1` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`vehicle_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
-
 CREATE TABLE `location` (
   `location_id` int unsigned NOT NULL AUTO_INCREMENT,
   `street` varchar(150) DEFAULT NULL,
@@ -85,7 +80,6 @@ CREATE TABLE `location` (
   PRIMARY KEY (`location_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
 CREATE TABLE `olamoneyaccount` (
   `olamoneyaccount_id` int unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int unsigned NOT NULL,
@@ -94,8 +88,6 @@ CREATE TABLE `olamoneyaccount` (
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `olamoneyaccount_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
-
 
 CREATE TABLE `payment` (
   `payment_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -110,8 +102,6 @@ CREATE TABLE `payment` (
   CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
-
 CREATE TABLE `rentalpackages` (
   `package_id` int unsigned NOT NULL AUTO_INCREMENT,
   `vehicle_type` varchar(20) NOT NULL,
@@ -120,7 +110,6 @@ CREATE TABLE `rentalpackages` (
   `price` int NOT NULL,
   PRIMARY KEY (`package_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
 
 CREATE TABLE `savedplaces` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -132,7 +121,6 @@ CREATE TABLE `savedplaces` (
   CONSTRAINT `savedplaces_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
   CONSTRAINT `savedplaces_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
 
 CREATE TABLE `search` (
   `search_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -146,8 +134,6 @@ CREATE TABLE `search` (
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `search_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
-
 
 CREATE TABLE `shared` (
   `shared_id` int unsigned NOT NULL,
@@ -167,8 +153,6 @@ CREATE TABLE `sharedbookings` (
   CONSTRAINT `sharedbookings_ibfk_2` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
-
 CREATE TABLE `transactions` (
   `transaction_id` int unsigned NOT NULL AUTO_INCREMENT,
   `olamoneyaccount_id` int unsigned NOT NULL,
@@ -182,7 +166,6 @@ CREATE TABLE `transactions` (
   CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `bankaccount` (`account_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
 CREATE TABLE `trip` (
   `trip_id` int unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` int unsigned NOT NULL,
@@ -193,7 +176,6 @@ CREATE TABLE `trip` (
   `endtime` time DEFAULT NULL,
   PRIMARY KEY (`trip_id`,`booking_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
 
 CREATE TABLE `vehicles` (
   `vehicle_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -212,3 +194,4 @@ CREATE TABLE `vehicles` (
   `dutyend` time NOT NULL,
   PRIMARY KEY (`vehicle_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+

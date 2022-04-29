@@ -1,3 +1,6 @@
+use owla;
+
+
 -- location insertions
 insert into location (street, locality, city, state, pincode) values ('3 Graceland Street', 'Linden', 'New Delhi', 'Delhi', 110010);
 insert into location (street, locality, city, state, pincode) values ('046 Sycamore Avenue', 'Thackeray', 'New Delhi', 'Delhi', 110064);
@@ -546,6 +549,7 @@ insert into customers (location_id, name, contact, emailid, paymentmode, savedpl
 
 
 -- vehicle insertions
+
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (186, 'DL4CAF8111', 'Bike', 'Diesel', 'Saturn', 'S-Series', 1, 0, 1, '15:08:11', '3:23:16', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (41, 'MH12DE2602', 'Bike', 'Diesel', 'Dodge', 'Intrepid', 1, 0, 1, '6:32:39', '7:41:54', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (195, 'MH12DE2602', 'Bike', 'Diesel', 'Mercury', 'Tracer', 0, 0, 1, '14:56:26', '15:25:55', 2, 30);
@@ -603,6 +607,7 @@ insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, mo
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (134, 'HR26DQ7468', 'SUV', 'Diesel', 'Subaru', 'Loyale', 1, 1, 0, '16:12:49', '14:08:31', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (64, 'DL4CAF5509', 'SUV', 'Diesel', 'Mercury', 'Tracer', 0, 1, 0, '9:27:19', '19:07:51', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (63, 'HR26DQ7908', 'Bike', 'CNG', 'Hyundai', 'Elantra', 0, 1, 1, '13:59:58', '3:44:15', 2, 30);
+insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (69, 'DL4CAF4270', 'SUV', 'Diesel', 'Infiniti', 'Q', 0, 1, 0, '19:00:46', '17:23:08', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (129, 'HR26DQ4769', 'Bike', 'CNG', 'Plymouth', 'Colt', 1, 1, 0, '0:57:38', '8:52:19', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (174, 'HR26DQ3720', 'SUV', 'Petrol', 'Ford', 'Explorer Sport', 0, 0, 0, '6:00:19', '15:33:31', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (223, 'DL1CAM3241', 'Sedan', 'Diesel', 'Buick', 'Regal', 0, 0, 1, '13:38:30', '15:57:14', 2, 30);
@@ -610,11 +615,57 @@ insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, mo
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (107, 'DL4CAF1887', 'SUV', 'Petrol', 'Chevrolet', 'Express 1500', 0, 1, 1, '12:56:23', '0:59:21', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (162, 'DL10S4625', 'Sedan', 'CNG', 'Chrysler', 'Sebring', 0, 1, 0, '4:21:39', '2:30:37', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (30, 'HR26DQ7908', 'SUV', 'Diesel', 'Acura', 'CL', 1, 1, 0, '21:10:28', '11:29:11', 2, 30);
-insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (230, 'HR26DQ3060', 'SUV', 'Petrol', 'Ford', 'Tempo', 1, 0, 0, '5:31:47', '16:35:48', 2, 30);
+insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (201, 'HR26DQ3060', 'SUV', 'Petrol', 'Ford', 'Tempo', 1, 0, 0, '5:31:47', '16:35:48', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (98, 'DL4CAF5968', 'Sedan', 'Petrol', 'Chevrolet', 'Sportvan G30', 1, 1, 1, '3:03:47', '1:34:20', 2, 30);
 insert into vehicles (currentlocation_id, numberplate, type, fueltype, brand, model, interstatepermit, rental, availability, dutystart, dutyend, maxcapacity, price) values (181, 'HR26DQ7908', 'Mini', 'CNG', 'Audi', '4000s Quattro', 1, 1, 1, '4:05:47', '15:14:24', 2, 30);
 
+-- drivers insertions
 
-
-
-
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (53, 'Lida Prujean', '7034797997', '11119713948', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (55, 'Boycie Kenington', '1517993027', '24213414038', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (30, 'Constance Jesper', '4193931095', '30452108382', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (52, 'Don Gerretsen', '9499172433', '31818150572', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (37, 'Valentijn Accombe', '9854879966', '60165643376', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (67, 'Blane Potticary', '7613827194', '43020199021', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (54, 'Julianne Mosdill', '6037080684', '46371686770', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (36, 'Kelby Coltherd', '5231919415', '03476697752', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (67, 'Wesley Di Maria', '7688388447', '89749274735', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (62, 'Gayelord Knowller', '7591115319', '51316895827', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (32, 'Mair Philipet', '2532445293', '14473804618', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (29, 'Brittani Nana', '6026517795', '81540800924', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (40, 'Shelba Sellstrom', '4387445261', '11530805273', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (64, 'Norina Cromblehome', '7342848908', '33981507899', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (59, 'Lona Belchamber', '7799695831', '31609066047', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (28, 'Montague Cheatle', '5802128842', '42440143435', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (58, 'Cyrill Wreiford', '3838133502', '10370093619', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (56, 'Carl Cushelly', '2142646453', '60204695333', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (46, 'Delia Antliff', '5384740260', '61230437547', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (31, 'Rica Lethcoe', '2138983334', '50901891227', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (49, 'Arnuad Whetnall', '3379736984', '64246414800', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (45, 'Rene Brisse', '9673566950', '50638723681', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (68, 'Pierce Ilyenko', '1103472899', '18702425965', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (31, 'Jennica Boodle', '7621669569', '73858364254', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (61, 'Crystal Theml', '1811526238', '35149589955', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (46, 'Kattie Antham', '4433838428', '90355448884', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (63, 'Chicky Dowles', '3627241974', '06820660607', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (69, 'Tuckie Rispen', '2324057487', '98136942756', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (33, 'Isak Stacy', '8655945432', '88715794661', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (30, 'Ursuline Bierman', '7326953207', '22199113085', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (66, 'Marchall Doveston', '8769329382', '59069884272', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (50, 'Gonzales Gierck', '2337698873', '71181101970', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (56, 'Jacinda Tourmell', '9813118909', '82493577478', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (34, 'Agatha Cruden', '6895988031', '74312871439', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (28, 'Gabriella Simko', '6812405971', '04245077163', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (66, 'Eunice McGrirl', '2651437085', '52215629195', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (32, 'Noella Purselowe', '9089361388', '22709164059', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (52, 'Milton Reinbach', '8992903467', '39227022826', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (59, 'Gav Bolsover', '2055582722', '98395551262', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (63, 'Ilse Cisland', '1769500340', '94396419097', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (50, 'Kaia O''Kerin', '7573201516', '49444721867', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (35, 'Hartley Need', '2132093875', '23474654099', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (27, 'Brandea Blackborn', '1832882271', '07828775074', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (60, 'Philomena Eisenberg', '6415027207', '44800232649', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (30, 'Michelina Viccary', '6064376619', '66133515269', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (50, 'Kelcie Castanaga', '2046026056', '44181087881', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (26, 'Clyde Braganca', '8311871339', '44616503478', 0, 0, 0, 0);
+insert into drivers (vehicle_id, name, contact, license, rating, tripscompleted, noofratings, earning) values (30, 'Bran Karpov', '5158313869', '80927321852', 0, 0, 0, 0);

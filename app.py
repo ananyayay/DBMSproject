@@ -24,10 +24,8 @@ def driver_login():
 def admin_home():
     if request.method=="POST":
         if "first" in request.form:
-            print(db.query_1())
             return table_template(db.query_1())
         elif "second" in request.form:
-            print(db.query_2())
             return table_template(db.query_2())
         elif "third" in request.form:
             return table_template(db.query_11())
@@ -55,6 +53,13 @@ def customer_home():
 
 @app.route("/driver_home.html", methods = ["GET", "POST"])
 def driver_home():
+    if request.method == "POST":
+        if "first" in request.form:
+            return table_template(db.get_current_rides())
+        elif "second" in request.form:
+            return table_template(db.get_past_bookings())
+        elif "third" in request.form:
+            return table_template(db.get_past_trips())
     return render_template("driver_home.html")
 
 @app.route("/table_template.html")

@@ -181,3 +181,33 @@ class DataBase():
         res = cur.fetchall()
         cur.execute("DROP VIEW query12;")
         return list(set(res))
+    
+    def get_current_bookings(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW current_bookings AS ;"""
+        )
+        cur.execute("SELECT * FROM current_bookings;")
+        res = cur.fetchall()
+        cur.execute("DROP VIEW current_bookings;")
+        return list(set(res))
+    
+    def get_past_bookings(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW past_bookings AS ;"""
+        )
+        cur.execute("SELECT * FROM past_bookings;")
+        res = cur.fetchall()
+        cur.execute("DROP VIEW past_bookings;")
+        return list(set(res))
+    
+    def get_past_trips(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW past_trips AS ;"""
+        )
+        cur.execute("SELECT * FROM past_trips;")
+        res = cur.fetchall()
+        cur.execute("DROP VIEW past_trips;")
+        return list(set(res))

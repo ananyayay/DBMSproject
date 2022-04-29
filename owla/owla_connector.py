@@ -54,7 +54,7 @@ class DataBase():
         cur.execute("CREATE VIEW savedlocs AS SELECT l.street, l.locality, l.city, l.state, l.pincode FROM location AS l, customers AS c, savedplaces AS sp WHERE sp.customer_id=1 AND sp.location_id=l.location_id;")
         cur.execute("SELECT * FROM savedlocs;")
         q1 = cur.fetchall()
-        # cur.execute("DROP VIEW savedlocs;")
+        cur.execute("DROP VIEW savedlocs;")
         return list(set(q1))
 
     def insert_searchcabs(self, ridetype, pickup, drop, vehicle_type):

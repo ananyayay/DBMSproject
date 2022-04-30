@@ -1,3 +1,5 @@
+-- file to drop all users 
+-- to recreate db
 drop user 'admin1@coldmail.com'@localhost;
 drop user 'admin2@coldmail.com'@localhost;
 drop user 'admin3@coldmail.com'@localhost;

@@ -24,25 +24,25 @@ SELECT driver_id, drivers.vehicle_id, name, contact, license FROM drivers, searc
 
 -- drivers with same location
 
---if city ride:
+-- if city ride:
 SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and pickup = vehicles.currentlocation_id and vehicles.type = cartype and vehicle.availability=1;
 
---if oustation:
+-- if oustation:
 SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and pickup = vehicles.currentlocation_id and vehicles.type = cartype and vehicle.availability=1 and interstatepermit=1;
 
---if rental:
+-- if rental:
 SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and pickup = vehicles.currentlocation_id and vehicles.type = cartype and vehicle.availability=1 and rental=1;
 
---if shared:
+-- if shared:
 SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and pickup = vehicles.currentlocation_id and vehicles.type = cartype and vehicle.availability=1 and maxcapacity>1;
 
 -- SECOND TABLE:
 SELECT drivers.name, drivers.contact, drivers.rating, drivers.tripscompleted, vehicles.numberplate, vehicles.brand, vehicles.model, vehicles.type, vehicles.fueltype FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and drivers.driver_id = id;
 
---if when=’now’
+-- if when=’now’
 INSERT into booking (driver_id, customer_id, from_location, to_location, timeofbooking, scheduledtime, ridetype, noofpassengers, isScheduled, status) values d_id, 1, pickup, drop, time, NULL, ridetype, 1, 0, booked
 
---if when!=’now’
+-- if when!=’now’
 INSERT into booking (driver_id, customer_id, from_location, to_location, timeofbooking, scheduledtime, ridetype, noofpassengers, isScheduled, status) values d_id, 1, pickup, drop, time, when, ridetype, 1, 1, booked
 
 -- show booking:

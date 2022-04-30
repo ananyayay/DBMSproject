@@ -48,6 +48,15 @@ def customer_home():
         drop = request.form["drop"]
         when = request.form["when"]
         db.insert_searchcabs(ridetype, pickup, drop, cartype)
+        drivs = db.nearby_drivers(ridetype, pickup, cartype)
+        d_id = drivs[0][0]
+        deets = db.get_dr_details(d_id)
+        db.insert_booking(d_id, when, pickup, drop, ridetype)
+        books = db.get_booking()
+        b_id = books[-1][0]
+        db.insert_trip(b_id, pickup, drop)
+        trip = db.get_trip()
+        return booking(drivs, deets, [books[-1]], [trip[-1]])
 
     return render_template("customer_home.html")
 
@@ -55,12 +64,30 @@ def customer_home():
 def driver_home():
     if request.method == "POST":
         if "first" in request.form:
-            return table_template(db.get_current_rides())
+            curr_ride = db.get_current_ride()
+            curr_ride = [curr_ride[-1]]
+            return table_template(curr_ride)
         elif "second" in request.form:
-            return table_template(db.get_past_bookings())
+            past_books = db.get_past_bookings()
+            return table_template(past_books)
         elif "third" in request.form:
-            return table_template(db.get_past_trips())
+            past_trips = db.get_past_trips()
+            return table_template(past_trips)
     return render_template("driver_home.html")
+
+@app.route("/yourvehicles.html", methods = ["GET", "POST"])
+def get_vehicles():
+    vehics = db.your_vehicles()
+    return render_template("yourvehicles.html", row1 = vehics)
+
+@app.route("/yourprofile.html", methods = ["GET", "POST"])
+def yourprofile():
+    prof = db.your_profile()
+    return render_template("yourprofile.html", row1 = prof)
+
+@app.route("/booking.html")
+def booking(drivs, dets, book, trip):
+    return render_template("booking.html", row1 = drivs, row2 = dets, row3 = book, row4 = trip)
 
 @app.route("/table_template.html")
 def table_template(query):

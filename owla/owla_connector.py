@@ -1,4 +1,5 @@
 import mysql.connector as conn
+import datetime
 
 class DataBase():
     def __init__(self) -> None:
@@ -210,4 +211,161 @@ class DataBase():
         cur.execute("SELECT * FROM past_trips;")
         res = cur.fetchall()
         cur.execute("DROP VIEW past_trips;")
+        return list(set(res))
+    
+    def nearby_drivers(self, ridetype, pickup, cartype):
+        cur = self.cursor
+        if ridetype=="cityride":
+            cur.execute(
+                """CREATE VIEW nearbydr AS SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and %s = vehicles.currentlocation_id and vehicles.type = %s and vehicles.availability=1;""",
+                (pickup, cartype)
+            )
+        elif ridetype=="shared":
+            cur.execute(
+                """CREATE VIEW nearbydr AS SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and %s = vehicles.currentlocation_id and vehicles.type = %s and vehicles.availability=1 and maxcapacity>1;""",
+                (pickup, cartype)
+            )
+        elif ridetype=="rentals":
+            cur.execute(
+                """CREATE VIEW nearbydr AS SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and %s = vehicles.currentlocation_id and vehicles.type = %s and vehicles.availability=1 and rental=1;""",
+                (pickup, cartype)
+            )
+        elif ridetype=="outstation":
+            cur.execute(
+                """"CREATE VIEW nearbydr AS SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and %s = vehicles.currentlocation_id and vehicles.type = %s and vehicles.availability=1 and interstatepermit=1;""",
+                (pickup, cartype)
+            )
+        cur.execute("SELECT * FROM nearbydr;")
+        res = cur.fetchall()
+        cur.execute("DROP VIEW nearbydr;")
+        return list(set(res))
+    
+    def get_dr_details(self, d_id):
+        cur = self.cursor
+        cur.execute(
+            f"""CREATE VIEW deets AS SELECT drivers.name, drivers.contact, drivers.rating, drivers.tripscompleted, vehicles.numberplate, vehicles.brand, vehicles.model, vehicles.type, vehicles.fueltype FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and drivers.driver_id = {d_id};""",
+        )
+        cur.execute("SELECT * FROM deets;")
+        res = cur.fetchall()
+        cur.execute("DROP VIEW deets;")
+        return list(set(res))
+    
+    def insert_booking(self, d_id, when, pickup, drop, ridetype):
+        cur = self.cursor
+        if when=="now":
+            cur.execute(
+                """INSERT into booking (driver_id, customer_id, from_location, to_location, timeofbooking, ridetype, noofpassengers, isScheduled, status) values (%s, '1', %s, %s, %s, %s, '1', '0', 'booked');""",
+                (d_id, pickup, drop, datetime.datetime.now().strftime("%H:%M:%S"), ridetype)
+                )
+        else:
+            cur.execute(
+                """INSERT into booking (driver_id, customer_id, from_location, to_location, timeofbooking, scheduledtime, ridetype, noofpassengers, isScheduled, status) values (%s, '1', %s, %s, %s, %s, %s, '1', '1', 'booked');""",
+                (d_id, pickup, drop, datetime.datetime.now().strftime("%H:%M:%S"), datetime.datetime.strptime(when, "%H:%M:%S"), ridetype)
+            )
+        self.db.commit()
+    
+    def get_booking(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW showbooked AS SELECT booking.booking_id, drivers.name, drivers.contact, from_location, to_location, timeofbooking, scheduledtime, ridetype, noofpassengers, status FROM drivers, booking WHERE drivers.driver_id = booking.driver_id AND customer_id='1' AND booking.status='booked';"""
+        )
+        cur.execute("SELECT * FROM showbooked;")
+        res = cur.fetchall()
+        cur.execute("DROP VIEW showbooked;")
+        return list(set(res))
+    
+    def insert_trip(self, b_id, pickup, drop):
+        cur = self.cursor
+        distance = abs(int(drop) - int(pickup))
+        curr_time = datetime.datetime.now()
+        td = datetime.timedelta(hours=distance/50)
+        new_currtime = curr_time + td
+        cur.execute(
+            """INSERT into trip(booking_id, pickuplocation, droplocation, distance, starttime, endtime) VALUES (%s, %s, %s, %s, %s, %s);""",
+            (str(b_id), pickup, drop, str(distance), curr_time.strftime("%H:%M:%S"), new_currtime.strftime("%H:%M:%S"))
+        )
+        self.db.commit()
+    
+    def get_trip(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW curr_trip AS SELECT * FROM trip;"""
+        )
+        cur.execute(
+            """SELECT * FROM curr_trip;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW curr_trip;"""
+        )
+        return list(set(res))
+    
+    def get_current_ride(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW curr_rides AS SELECT * from booking WHERE booking.status='booked' and booking.driver_id=3;"""
+        )
+        cur.execute(
+            """SELECT * FROM curr_rides;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW curr_rides;"""
+        )
+        return list(set(res))
+    
+    def get_past_bookings(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW past_books AS SELECT * from booking WHERE booking.driver_id=3;"""
+        )
+        cur.execute(
+            """SELECT * FROM past_books;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW past_books;"""
+        )
+        return list(set(res))
+    
+    def get_past_trips(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW past_trips AS SELECT trip.booking_id, trip.pickuplocation, trip.droplocation, trip.distance, trip.starttime, trip.endtime from trip, booking WHERE booking.driver_id = 3 and trip.booking_id = booking.booking_id;;"""
+        )
+        cur.execute(
+            """SELECT * FROM past_trips;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW past_trips;"""
+        )
+        return list(set(res))
+    
+    def your_vehicles(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW yourvehicles AS SELECT vehicles.vehicle_id, vehicles.currentlocation_id, vehicles.numberplate, vehicles.type, vehicles.fueltype, vehicles.brand, vehicles.model, vehicles.maxcapacity, vehicles.price, vehicles.interstatepermit, vehicles.rental, vehicles.availability, vehicles.dutystart, vehicles.dutyend from vehicles, drivers WHERE drivers.driver_id = 3 AND drivers.vehicle_id = vehicles.vehicle_id;"""
+        )
+        cur.execute(
+            """SELECT * FROM yourvehicles;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW yourvehicles;"""
+        )
+        return list(set(res))
+    
+    def your_profile(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW profile AS SELECT * FROM drivers WHERE drivers.driver_id = 3;"""
+        )
+        cur.execute(
+            """SELECT * FROM profile;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW profile;"""
+        )
         return list(set(res))

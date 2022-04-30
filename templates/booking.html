@@ -86,11 +86,14 @@
         </div>
         <div class="displaylabel" id="displaylabel5">
             Make your payment for the trip here: 
-            <button id="payment" onclick="paymentPage()">
-                Make Payment
-            </button>
-            <!-- <span id = "payment" onclick="paymentPage()">Make Payment</span> -->
         </div>
+        <form>
+            <label for="modeinput" class="form_label">Mode of Payment</label>
+            <input type="text" class="form-control" id="modeinput" placeholder="Enter your mode of payment">
+            <label for="amountinput" class="form_label">Amount</label>
+            <input type="text" class="form-control" id="amountinput" placeholder="Enter your amount">
+            <input type="submit" class="loginbutton" onclick="formSubmitted()" value = "Make Payment"/>
+        </form>
         <div id="footer"></div>
     </body>
 </html>

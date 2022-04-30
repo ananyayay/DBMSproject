@@ -42,16 +42,6 @@
     background-color: #CBE500;
 }
 
-.table2
-{
-    border: 3;
-    top: 80px;
-    left: 60px;
-    position: relative;
-    background-color: #CBE500;
-
-}
-
 .headings
 {
     /* background-color: aqua; */
@@ -59,4 +49,5 @@
     font-size: 20px;
     top: 50px;
     position: relative;
+    left: 60px;
 }

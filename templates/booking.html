@@ -8,14 +8,89 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-        <table border = 1>
-            {% for row in rows %}
-                <tr>
-                    {% for each in row %}
-                        <td>{{ each }}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </table>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <img src="../resources/logo.png" height="50" alt="Owla"/>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Add location</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="savedlocations.html">Your saved locations</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="yourrides.html">Your rides with Owla</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="yourwallet.html">Your wallet</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="header"></div>
+        <div class="displaylabel" id="displaylabel1">
+            These are the drivers with their vehicles available for service in your locality currently:
+        </div>
+        <div class="tablediv" id="table1">
+            <table border = 1>
+                {% for row in rows %}
+                    <tr>
+                        {% for each in row %}
+                            <td>{{ each }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="displaylabel" id="displaylabel2">
+            Details of the driver who is assigned to you are:
+        </div>
+        <div class="tablediv" id="table2">
+            <table border = 1>
+                {% for row in rows %}
+                    <tr>
+                        {% for each in row %}
+                            <td>{{ each }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="displaylabel" id="displaylabel3">
+            Details of your confirmed booking are:
+        </div>
+        <div class="tablediv" id="table3">
+            <table border = 1>
+                {% for row in rows %}
+                    <tr>
+                        {% for each in row %}
+                            <td>{{ each }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="displaylabel" id="displaylabel4">
+            Details of your trip are:
+        </div>
+        <div class="tablediv" id="table4">
+            <table border = 1>
+                {% for row in rows %}
+                    <tr>
+                        {% for each in row %}
+                            <td>{{ each }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="displaylabel" id="displaylabel5">
+            Make your payment for the trip here: 
+            <button id="payment" onclick="paymentPage()">
+                Make Payment
+            </button>
+            <!-- <span id = "payment" onclick="paymentPage()">Make Payment</span> -->
+        </div>
+        <div id="footer"></div>
     </body>
 </html>

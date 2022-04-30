@@ -25,3 +25,18 @@ GRANT ALL on owla.olamoneyaccount to 'customer2@coldmail.com'@localhost;
 GRANT ALL on owla.location to 'customer2@coldmail.com'@localhost;
 GRANT ALL on owla.cancelledrides to 'customer2@coldmail.com'@localhost;
 GRANT ALL on owla.customers to 'customer2@coldmail.com'@localhost;
+
+
+
+GRANT ALL on owla.bankaccount to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.booking to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.savedplaces to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.search to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.sharedbookings to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.transactions to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.trips to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.payment to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.olamoneyaccount to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.location to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.cancelledrides to 'customer3@coldmail.com'@localhost;
+GRANT ALL on owla.customers to 'customer3@coldmail.com'@localhost;

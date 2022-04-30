@@ -37,27 +37,38 @@
         </div> -->
         <div class="address">
             <form method="post">
-                <p>Select ride type:</p>
-                <input type="radio" id="cityride" name="ride" value="cityride">
-                <label for="cityride">City Ride</label><br>
-                <input type="radio" id="shared" name="ride" value="shared">
-                <label for="shared">shared</label><br>
-                <input type="radio" id="rentals" name="ride" value="rentals">
-                <label for="rentals">Rentals</label><br>
-                <input type="radio" id="outstation" name="ride" value="outstation">
-                <label for="outstation">Outstation</label>
-                <br><br>
-                <p>Select car type:</p>
-                <input type="radio" id="mini" name="cartype" value="mini">
-                <label for="mini">Mini</label><br>
-                <input type="radio" id="sedan" name="cartype" value="sedan">
-                <label for="sedan">Sedan</label><br>
-                <input type="radio" id="bike" name="cartype" value="bike">
-                <label for="bike">Bike</label><br>
-                <input type="radio" id="auto" name="cartype" value="auto">
-                <label for="auto">Auto</label><br>
-                <input type="radio" id="suv" name="cartype" value="suv">
-                <label for="suv">SUV</label>
+                <br>
+                <div class="radiocontainer">
+                    <div class="ridetype">
+                        <p class="typelabel">Select ride type:</p>
+                        <input class="radio" type="radio" id="cityride" name="ride" value="cityride">
+                        <label class="radiolabel" for="cityride">City Ride</label><br>
+                        <input class="radio" type="radio" id="shared" name="ride" value="shared">
+                        <label class="radiolabel" for="shared">shared</label><br>
+                        <input class="radio" type="radio" id="rentals" name="ride" value="rentals">
+                        <label class="radiolabel" for="rentals">Rentals</label><br>
+                        <input class="radio" type="radio" id="outstation" name="ride" value="outstation">
+                        <label class="radiolabel" for="outstation">Outstation</label>
+                    </div>
+                    <br>
+                    <div class="cartype">
+                        <p class="typelabel">Select car type:</p>
+                        <input class="radio" type="radio" id="mini" name="cartype" value="mini">
+                        <label class="radiolabel" for="mini">Mini</label><br>
+                        <input class="radio" type="radio" id="sedan" name="cartype" value="sedan">
+                        <label class="radiolabel" for="sedan">Sedan</label><br>
+                        <input class="radio" type="radio" id="bike" name="cartype" value="bike">
+                        <label class="radiolabel" for="bike">Bike</label><br>
+                        <input class="radio" type="radio" id="auto" name="cartype" value="auto">
+                        <label class="radiolabel" for="auto">Auto</label><br>
+                        <input class="radio" type="radio" id="suv" name="cartype" value="suv">
+                        <label class="radiolabel" for="suv">SUV</label>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
                 <div class="form-group">
                     <label for="address">PICK UP</label>
                     <input type="text" name="pickup" id="pickup" placeholder="Enter your pick up location (number from 1 to 10)" size="30px" maxlength="100">

@@ -139,3 +139,44 @@
   box-shadow: 2px 2px 4px 0px #959595;
   background-color: rgba(203, 299, 0, 1);
 }
+
+.radiolabel
+{
+  font-family: 'Montserrat';
+  font-size: 18px;
+  /* text-align: center; */
+  /* background-color: #959595; */
+}
+
+.typelabel
+{
+  font-family: 'Montserrat';
+  font-size: 18px;
+}
+
+.ridetype
+{
+  left: 100px;
+  top: 10px;
+  /* background-color: #ba4747; */
+  position: relative;
+  /* float: left; */
+}
+
+.cartype
+{
+  /* display: inline; */
+  left: 700px;
+  top: 10px;
+  /* background-color: #590505; */
+  position: relative;
+  /* float: left; */
+}
+
+.radiocontainer
+{
+  /* background-color: #000000; */
+  display: flex;
+  position: relative;
+  top: 70px;
+}

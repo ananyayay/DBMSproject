@@ -79,7 +79,10 @@ SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, pric
         and maxcapacity>1;
 
 -- SECOND TABLE:
-SELECT drivers.name, drivers.contact, drivers.rating, drivers.tripscompleted, vehicles.numberplate, vehicles.brand, vehicles.model, vehicles.type, vehicles.fueltype FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and drivers.driver_id = id;
+SELECT drivers.name, drivers.contact, drivers.rating, drivers.tripscompleted, vehicles.numberplate, vehicles.brand, vehicles.model, vehicles.type, vehicles.fueltype 
+    FROM drivers, vehicles 
+    WHERE drivers.vehicle_id = vehicles.vehicle_id 
+    and drivers.driver_id = id;
 
 -- if when='now'
 INSERT into booking (driver_id, customer_id, from_location, to_location, timeofbooking, scheduledtime, ridetype, noofpassengers, isScheduled, status) values d_id, 1, pickup, drop, time, NULL, ridetype, 1, 0, booked
@@ -104,7 +107,12 @@ SELECT type, COUNT(type) number_of_vehicles FROM vehicles GROUP BY type ORDER BY
 SELECT customers.customer_id, name,contact,emailid FROM customers WHERE EXISTS (SELECT * FROM olamoneyaccount WHERE olamoneyaccount.customer_id = customers.customer_id);
 
 -- drivers in the locations saved nearby 
-SELECT driver_id, drivers.vehicle_id, name, contact, license FROM drivers, search, vehicles WHERE search.search_id= 101 and drivers.vehicle_id = vehicles.vehicle_id and search.from_location = vehicles.currentlocation_id and search.vehicle_type = vehicles.type;
+SELECT driver_id, drivers.vehicle_id, name, contact, license 
+    FROM drivers, search, vehicles 
+    WHERE search.search_id= 101 
+        and drivers.vehicle_id = vehicles.vehicle_id 
+        and search.from_location = vehicles.currentlocation_id 
+        and search.vehicle_type = vehicles.type;
 
 -- saved location
 CREATE VIEW saved_places_view as 
@@ -117,7 +125,11 @@ SELECT amount, timeoftransaction FROM transactions WHERE transactions.olamoneyd=
 -- RIDES HISTORY FOR CUSTOMER:
 
 -- cancelled:
-SELECT from_location, to_location, timeofbooking, ridetype, status, reason, cancelledby, penalty from booking, cancelledrides WHERE booking.customer_id=1 AND booking.status='cancelled' and cancelledrides.booking_id=booking.booking_id;
+SELECT from_location, to_location, timeofbooking, ridetype, status, reason, cancelledby, penalty 
+    from booking, cancelledrides 
+    WHERE booking.customer_id=1 
+        AND booking.status='cancelled' 
+        AND cancelledrides.booking_id=booking.booking_id;
 
 -- rentals:
 SELECT from_location, to_location, timeofbooking, ridetype, status, vehicle_type, duration_hrs, distance_km from booking, rentalpackages WHERE booking.customer_id=1 AND rentalpackages.package_id=booking.package_id;

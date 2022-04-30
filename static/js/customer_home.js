@@ -25,3 +25,8 @@ function rideTypeSelected(id)
             ridetype = "outstation";
     }
 }
+
+function viewMessage()
+{
+    window.location.href = "messages.html";
+}

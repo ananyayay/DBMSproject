@@ -44,8 +44,18 @@
 
 <br><br>
 
+, ridetype, status from booking WHERE booking.customer_id=1 AND booking.ridetype='shared';")
+
 <h3>Shared</h3>
 <table border = 1>
+    <tr>
+        <th>From Location</th>
+        <th>To Location</th>
+        <th>Time of Booking</th>
+        <th>Ride Type</th>
+        <th>Status</th>
+        
+    </tr>
     {% for row in row3 %}
         <tr>
             {% for each in row %}
@@ -59,6 +69,14 @@
 
 <h3>Outstation</h3>
 <table border = 1>
+    <tr>
+        <th>From Location</th>
+        <th>To Location</th>
+        <th>Time of Booking</th>
+        <th>Ride Type</th>
+        <th>Status</th>
+        
+    </tr>
     {% for row in row4 %}
         <tr>
             {% for each in row %}

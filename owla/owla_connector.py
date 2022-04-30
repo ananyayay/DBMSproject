@@ -390,3 +390,45 @@ class DataBase():
             (x,)
         )
         self.db.commit()
+    
+    def get_customer_users(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW cusers AS SELECT * FROM customer_users;"""
+        )
+        cur.execute(
+            """SELECT * FROM cusers;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW cusers;"""
+        )
+        return list(set(res))
+    
+    def get_driver_users(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW dusers AS SELECT * FROM driver_users;"""
+        )
+        cur.execute(
+            """SELECT * FROM dusers;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW dusers;"""
+        )
+        return list(set(res))
+    
+    def get_admin_users(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW ausers AS SELECT * FROM admin_users;"""
+        )
+        cur.execute(
+            """SELECT * FROM ausers;"""
+        )
+        res = cur.fetchall()
+        cur.execute(
+            """DROP VIEW ausers;"""
+        )
+        return list(set(res))

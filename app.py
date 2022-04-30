@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 from owla import owla_connector as oc
 
 app = Flask(__name__)
@@ -10,15 +10,46 @@ def homepage():
 
 @app.route("/admin_login.html", methods = ["GET", "POST"])
 def admin_login():
+    if request.method=="POST":
+        ausers = db.get_admin_users()
+        usern = request.form["emailinput"]
+        pw = request.form["passwordinput"]
+        print(ausers, (usern, pw))
+        if (usern, pw) in ausers:
+            return render_template("admin_home.html")
+        else:
+            return render_template("loginfailed.html")
     return render_template("admin_login.html")
 
 @app.route("/customer_login.html", methods = ["GET", "POST"])
 def customer_login():
+    if request.method=="POST":
+        cusers = db.get_customer_users()
+        usern = request.form["emailinput"]
+        pw = request.form["passwordinput"]
+        print(cusers, (usern, pw))
+        if (usern, pw) in cusers:
+            return redirect(url_for("customer_home"))
+        else:
+            return render_template("loginfailed.html")
     return render_template("customer_login.html")
 
 @app.route("/driver_login.html", methods = ["GET", "POST"])
 def driver_login():
+    if request.method=="POST":
+        dusers = db.get_driver_users()
+        usern = request.form["emailinput"]
+        pw = request.form["passwordinput"]
+        print(dusers, (usern, pw))
+        if (usern, pw) in dusers:
+            return render_template("driver_home.html")
+        else:
+            return render_template("loginfailed.html")
     return render_template("driver_login.html")
+
+@app.route("/loginfailed.html")
+def loginfailed():
+    return render_template("loginfailed.html")
 
 @app.route("/admin_home.html", methods = ["GET", "POST"])
 def admin_home():
@@ -99,6 +130,10 @@ def yourprofile():
 
 @app.route("/booking.html")
 def booking(drivs, dets, book, trip):
+    if request.method=="POST":
+        paymode = request.form["modeinput"]
+        amt = request.form["amountinput"]
+        print(paymode, amt)
     return render_template("booking.html", row1 = drivs, row2 = dets, row3 = book, row4 = trip)
 
 @app.route("/table_template.html")

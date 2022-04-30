@@ -16,19 +16,18 @@
         </nav>
         <div id="header"></div>
         <div class = "box">
-            <form class="form_setting">
+            <form method = "post" class = "form_setting">
                 <div class="emailbox" >
                   <label for="emailinput" class="form_label">Email address</label>
-                  <input type="email" class="form-control" id="emailinput" placeholder="Enter your email address">
+                  <input type="email" name = "emailinput" id="emailinput" class="form-control" placeholder="Enter your email address">
                 </div>
                 <div class="passwordbox">
                   <label for="passwordinput" class="form_label">Password</label>
-                  <input type="password" class="form-control" id="passwordinput" placeholder="Enter your password">
+                  <input type="password" name="passwordinput" id="passwordinput" class="form-control" placeholder="Enter your password">
                 </div>
-                <button class="loginbutton" onclick="formSubmitted()" type="reset">Login</button>
+                <input type="submit" class="loginbutton" value="Login"/>
             </form>
         </div>
         <div id="footer"></div>
-        <script src="../static/js/driver_login_code.js"></script>
     </body>
 </html>

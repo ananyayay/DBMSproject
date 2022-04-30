@@ -42,21 +42,12 @@
     background-color: bisque;
 }
 
-.table2
-{
-    border: 3;
-    top: 80px;
-    left: 60px;
-    position: relative;
-    background-color: bisque;
-
-}
-
 .headings
 {
     /* background-color: aqua; */
     font-family: sans-serif;
     font-size: 20px;
     top: 50px;
+    left: 60px;
     position: relative;
 }

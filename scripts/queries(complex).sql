@@ -19,7 +19,6 @@ SELECT customers.customer_id,name,contact,emailid FROM customers,booking WHERE c
 -- Show all payments for trip_id 1
 SELECT * FROM payment WHERE trip_id = 1;
 
-
 -- display all drivers in the same location as the from vehicle current location and vehicle type in search id 101
 SELECT driver_id, drivers.vehicle_id, name, contact, license FROM drivers, search, vehicles WHERE search.search_id= 101 and drivers.vehicle_id = vehicles.vehicle_id and search.from_location = vehicles.currentlocation_id and search.vehicle_type = vehicles.type;
 
@@ -36,7 +35,6 @@ SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, pric
 
 --if shared:
 SELECT driver_id, drivers.vehicle_id, name, contact, license, brand, model, price FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and pickup = vehicles.currentlocation_id and vehicles.type = cartype and vehicle.availability=1 and maxcapacity>1;
-
 
 -- SECOND TABLE:
 SELECT drivers.name, drivers.contact, drivers.rating, drivers.tripscompleted, vehicles.numberplate, vehicles.brand, vehicles.model, vehicles.type, vehicles.fueltype FROM drivers, vehicles WHERE drivers.vehicle_id = vehicles.vehicle_id and drivers.driver_id = id;

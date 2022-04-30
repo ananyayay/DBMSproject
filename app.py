@@ -91,6 +91,11 @@ def customer_home():
 
     return render_template("customer_home.html")
 
+@app.route("/messages.html")
+def messages():
+    q1 = db.get_messages()
+    return render_template("messages.html", row1 = [q1[-1]])
+
 @app.route("/add_location.html", methods = ["GET", "POST"])
 def add_location():
     if request.method == "POST":
@@ -130,10 +135,6 @@ def yourprofile():
 
 @app.route("/booking.html")
 def booking(drivs, dets, book, trip):
-    if request.method=="POST":
-        paymode = request.form["modeinput"]
-        amt = request.form["amountinput"]
-        print(paymode, amt)
     return render_template("booking.html", row1 = drivs, row2 = dets, row3 = book, row4 = trip)
 
 @app.route("/table_template.html")

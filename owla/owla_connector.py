@@ -331,7 +331,7 @@ class DataBase():
     def get_past_trips(self):
         cur = self.cursor
         cur.execute(
-            """CREATE VIEW past_trips AS SELECT trip.booking_id, trip.pickuplocation, trip.droplocation, trip.distance, trip.starttime, trip.endtime from trip, booking WHERE booking.driver_id = 3 and trip.booking_id = booking.booking_id;;"""
+            """CREATE VIEW past_trips AS SELECT trip.booking_id, trip.pickuplocation, trip.droplocation, trip.distance, trip.starttime, trip.endtime from trip, booking WHERE booking.driver_id = 3 and trip.booking_id = booking.booking_id;"""
         )
         cur.execute(
             """SELECT * FROM past_trips;"""
@@ -431,4 +431,14 @@ class DataBase():
         cur.execute(
             """DROP VIEW ausers;"""
         )
+        return list(set(res))
+    
+    def get_messages(self):
+        cur = self.cursor
+        cur.execute(
+            """CREATE VIEW msg AS SELECT * FROM message;"""
+        )
+        cur.execute("SELECT * FROM msg;")
+        res = cur.fetchall()
+        cur.execute("DROP VIEW msg;")
         return list(set(res))

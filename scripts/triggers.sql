@@ -1,4 +1,3 @@
-
 create table message (
 	message_id int auto_increment,
     payment_id int,
@@ -8,18 +7,6 @@ create table message (
 );
 
 
-Delimiter //
-CREATE trigger add_driver_earnings 
-	after INSERT ON payment 
-		for each row 
-		begin
-			if new.verdict= "Success"
-                then update drivers 
-			    set drivers.earning= drivers.earning + new.amount
-                where new.booking_id= booking.booking_id and booking.driver_id= drivers.driver_id; 
-            end if;
-end //
-Delimiter ;
 
 Delimiter //
 CREATE trigger check_ola_money 
@@ -54,3 +41,18 @@ CREATE trigger notify_for_payment
         end if;
 end //
 delimiter ; 
+
+
+Delimiter //
+CREATE trigger add_driver_earnings 
+	after INSERT ON payment 
+		for each row 
+		begin
+			if new.verdict= "Success"
+                then update drivers 
+			    set drivers.earning= drivers.earning + new.amount
+                where new.booking_id= booking.booking_id and booking.driver_id= drivers.driver_id; 
+            end if;
+end //
+Delimiter ;
+

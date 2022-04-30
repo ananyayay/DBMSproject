@@ -1,0 +1,12 @@
+GRANT ALL on owla.bankaccount to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.booking to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.savedplaces to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.search to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.sharedbookings to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.transactions to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.trips to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.payment to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.olamoneyaccount to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.location to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.cancelledrides to 'customer1@coldmail.com'@localhost;
+GRANT ALL on owla.customers to 'customer1@coldmail.com'@localhost;

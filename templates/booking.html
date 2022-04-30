@@ -34,7 +34,14 @@
         <div class="tablediv" id="table1">
             <table border = 1>
                 <tr>
-                    <th>Your balance</th>
+                    <th>Driver ID</th>
+                    <th>Vehicle ID</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>License</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Price</th>
                 </tr>
                 {% for row in row1 %}
                     <tr>
@@ -50,6 +57,17 @@
         </div>
         <div class="tablediv" id="table2">
             <table border = 1>
+                <tr>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Rating</th>
+                    <th>Trips Completed</th>
+                    <th>Numberplate</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>Fuel Type</th>
+                </tr>
                 {% for row in row2 %}
                     <tr>
                         {% for each in row %}
@@ -64,6 +82,18 @@
         </div>
         <div class="tablediv" id="table3">
             <table border = 1>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Pickup</th>
+                    <th>Drop</th>
+                    <th>Time of Booking</th>
+                    <th>Scheduled Time</th>
+                    <th>Ride Type</th>
+                    <th>Number of Passengers</th>
+                    <th>Status</th>
+                </tr>
                 {% for row in row3 %}
                     <tr>
                         {% for each in row %}
@@ -78,6 +108,15 @@
         </div>
         <div class="tablediv" id="table4">
             <table border = 1>
+                <tr>
+                    <th>Trip ID</th>
+                    <th>Booking ID</th>
+                    <th>Pickup</th>
+                    <th>Drop</th>
+                    <th>Distance</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
                 {% for row in row4 %}
                     <tr>
                         {% for each in row %}

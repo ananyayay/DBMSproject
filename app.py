@@ -60,6 +60,18 @@ def customer_home():
 
     return render_template("customer_home.html")
 
+@app.route("/add_location.html", methods = ["GET", "POST"])
+def add_location():
+    if request.method == "POST":
+        street = request.form["streetinput"]
+        locality = request.form["localityinput"]
+        city = request.form["cityinput"]
+        state = request.form["stateinput"]
+        pincode = request.form["pincodeinput"]
+        db.insert_location(street, locality, city, state, pincode)
+        db.insert_savedplaces()
+    return render_template("add_location.html")
+
 @app.route("/driver_home.html", methods = ["GET", "POST"])
 def driver_home():
     if request.method == "POST":

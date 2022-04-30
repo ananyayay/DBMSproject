@@ -369,3 +369,24 @@ class DataBase():
             """DROP VIEW profile;"""
         )
         return list(set(res))
+    
+    def insert_location(self, street, locality, city, state, pincode):
+        cur = self.cursor
+        cur.execute(
+            """INSERT INTO location (street, locality, city, state, pincode) VALUES (%s, %s, %s, %s, %s);""",
+            (street, locality, city, state, pincode)
+        )
+        self.db.commit()
+    
+    def insert_savedplaces(self):
+        cur = self.cursor
+        cur.execute(
+            """SELECT * FROM location;"""
+        )
+        getrektlol = cur.fetchall()
+        x = getrektlol[-1][0]
+        cur.execute(
+            """INSERT INTO savedplaces (customer_id, location_id) VALUES ('1', %s);""",
+            (x,)
+        )
+        self.db.commit()

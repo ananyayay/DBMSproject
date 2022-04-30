@@ -30,28 +30,28 @@
         </nav>
         <div id="header"></div>
         <div class = "box">
-            <form class="form_setting">
+            <form method = "post">
                 <div class="streetbox" >
-                  <label for="streetinput" class="form_label">Street</label>
-                  <input type="text" class="form-control" id="streetinput" placeholder="Enter the street">
+                    <input type="text" name="streetinput" id="streetinput" class="form-control" placeholder="Enter the street">
+                    <label for="streetinput" class="form_label">Street</label>
                 </div>
                 <div class="localitybox">
-                  <label for="localityinput" class="form_label">Locality</label>
-                  <input type="text" class="form-control" id="localityinput" placeholder="Enter the locality">
+                    <input type="text" name="localityinput" id="localityinput" class="form-control" placeholder="Enter the locality">
+                    <label for="localityinput" class="form_label">Locality</label>
                 </div>
                 <div class="citybox">
+                    <input type="text" name="cityinput" id="cityinput" class="form-control" placeholder="Enter the city">
                     <label for="cityinput" class="form_label">City</label>
-                    <input type="text" class="form-control" id="cityinput" placeholder="Enter the city">
                 </div>
                 <div class="statebox">
-                <label for="stateinput" class="form_label">State</label>
-                <input type="text" class="form-control" id="stateinput" placeholder="Enter the state">
+                    <input type="text" name="stateinput" id="stateinput" class="form-control" placeholder="Enter the state">
+                    <label for="stateinput" class="form_label">State</label>
                 </div>
                 <div class="pincodebox">
+                    <input type="text" name="pincodeinput" id="pincodeinput" class="form-control" placeholder="Enter the pincode">
                     <label for="pincodeinput" class="form_label">Pincode</label>
-                    <input type="text" class="form-control" id="pincodeinput" placeholder="Enter the pincode">
-                    </div>
-                <button class="loginbutton" onclick="formSubmitted()" type="reset">Login</button>
+                </div>
+                <input type="submit" class="loginbutton" onclick="formSubmitted()" value = "Submit"/>
             </form>
         </div>
         <div id="footer"></div>
